@@ -1,9 +1,10 @@
 import React from 'react'
 import { Text, View, StyleSheet, Image } from 'react-native'
+import { globalStyles } from '../styles/global'
 
 const Splash = () => {
   return (
-    <View style={splash.container}>
+    <View style={globalStyles.container}>
         <Image 
             source={require('../assets/controller.png')}
             style={splash.image}
@@ -14,11 +15,6 @@ const Splash = () => {
 }
 
 const splash = StyleSheet.create({
-    container:{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center"
-    },
     image: {
       width: 100,
       height: 100,
