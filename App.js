@@ -3,7 +3,7 @@ import Home from './screens/Home';
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import Splash from './screens/Splash';
-
+import Navigator from "./routes/homeStack"
 const getFonts = () => Font.loadAsync({
   'nunito-regular': require('./assets/fonts/Nunito-Regular.ttf'),
   'nunito-bold': require('./assets/fonts/Nunito-Bold.ttf'),
@@ -31,5 +31,5 @@ export default function App() {
     return <Splash />; // Render nothing while fonts are loading and splash screen is visible
   }
 
-  return <Home />;
+  return <Navigator />;
 }
