@@ -1,35 +1,20 @@
-import { useState, useEffect } from 'react';
-import Home from './screens/Home';
-import * as Font from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen';
-import Splash from './screens/Splash';
-import Navigator from "./routes/homeStack"
-const getFonts = () => Font.loadAsync({
-  'nunito-regular': require('./assets/fonts/Nunito-Regular.ttf'),
-  'nunito-bold': require('./assets/fonts/Nunito-Bold.ttf'),
-});
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
-  const [fontsLoaded, setFontsLoaded] = useState(false);
-
-  useEffect(() => {
-    async function loadFontsAndHideSplashScreen() {
-      try {
-        await SplashScreen.preventAutoHideAsync(); // Prevent auto-hiding of the splash screen
-        await getFonts();
-        await SplashScreen.hideAsync();
-        setFontsLoaded(true);
-      } catch (error) {
-        console.error('Error loading fonts:', error);
-      }
-    }
-
-    loadFontsAndHideSplashScreen();
-  }, []);
-
-  if (!fontsLoaded) {
-    return <Splash />; // Render nothing while fonts are loading and splash screen is visible
-  }
-
-  return <Navigator />;
+  return (
+    <View style={styles.container}>
+      <Text>Open up App.js to start working on your app!</Text>
+      <StatusBar style="auto" />
+    </View>
+  );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
