@@ -3,17 +3,15 @@ import { TouchableOpacity, Image, View, Text } from 'react-native'
 import landing from "../../assets/landing.png"
 import { globalStyles } from '../../Global/globalStyles'
 const Start = ({navigation}) => {
-  const pressHandler = ()=>{
-    navigation.navigate("login")
-  }
+  console.log(navigation.getState());
   return (
     <View style={globalStyles.container}>
         <Image source={landing}/>
-        <TouchableOpacity style={globalStyles.btn}  onPress={pressHandler}>
+        <TouchableOpacity style={[globalStyles.btn,{marginBottom:20}]} onPress={()=>navigation.navigate("login")}>
             <Text style={globalStyles.btnText}>Login</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={globalStyles.btn}>
+        <TouchableOpacity style={globalStyles.btn} onPress={()=>navigation.navigate("register")}>
             <Text style={globalStyles.btnText}>Sign Up</Text>
         </TouchableOpacity>
     </View>

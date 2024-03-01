@@ -1,28 +1,22 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, View, TextInput, TouchableWithoutFeedback, ToastAndroid, Image, Keyboard, TouchableOpacity } from 'react-native'
 import { globalStyles } from '../../Global/globalStyles'
-import { FontAwesome , AntDesign, Entypo  } from '@expo/vector-icons';
-import FloatImg from "../../assets/signin.png"
-const Login = ({navigation}) => {
-  const [showPassword, setShowPassword] = useState(true);
+import { AntDesign, Entypo  } from '@expo/vector-icons';
+import FloatImg from "../../assets/signup.png"
+import { loginStyles } from '../login/Login';
+const Signup = ({navigation}) => {
+  const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  const logMethods=[
-    {name:"Facebook",svg: <FontAwesome name="facebook" size={24} color={globalStyles.primaryColor} />},
-    {name:"Icloud",svg: <AntDesign name="apple1" size={24} color={globalStyles.primaryColor}/>},
-    {name:"Google",svg: <AntDesign name="google" size={24} color={globalStyles.primaryColor}/>},
-  ];
+  const [showPassword, setShowPassword] = useState(true);
 
   const checkInputs=()=>{
-    if (email ==='' || password === '') {
+    if (email === ''|| password === '' || userName === '') {
       ToastAndroid.show("Please Fill All Inputs!", ToastAndroid.SHORT);
-    }else if(email === "ehabmah6969@gmail.com"){
+    }else if(email === "ehabmah6969@gmail.com" ){
       ToastAndroid.show(`Welcome,${email}`, ToastAndroid.SHORT);
-      navigation.navigate("home")
+      // navigation.navigate("home")
     }else{
-      console.log(email);
-      console.log(password);
       ToastAndroid.show("Wrong Email or Password", ToastAndroid.SHORT);
       setEmail('')
       setPassword('')
@@ -36,19 +30,28 @@ const Login = ({navigation}) => {
           size={45}
           color={globalStyles.primaryColor}
           style={loginStyles.back}
-          onPress={()=>{
-            navigation.goBack()
-          }}
+          onPress={()=> navigation.goBack()}
         />
 
         <View style={loginStyles.form}>
 
-          <View style={loginStyles.floatImg}>
+          <View style={signUpStyles.floatImg}>
             <Image source={FloatImg}/>
           </View>
 
-          <Text style={globalStyles.title}>Hi, Welcome Back!</Text>
+          <Text style={globalStyles.title}>Create New Account</Text>
 
+          <View style={loginStyles.field}>
+            <Text style={globalStyles.label}>Username</Text>
+            <TextInput 
+              style={globalStyles.input}
+              placeholder="username"
+              keyboardType="default"
+              onChangeText={(val)=> setUserName(val)}
+              value={userName}
+            />
+          </View>
+          
           <View style={loginStyles.field}>
             <Text style={globalStyles.label}>Email</Text>
             <TextInput 
@@ -71,26 +74,20 @@ const Login = ({navigation}) => {
             />
             {showPassword
             ?(<Entypo name="eye" size={24} color={globalStyles.primaryColor}style={loginStyles.eye} onPress={()=> setShowPassword(!showPassword)}/>)
-            :(<Entypo name="eye-with-line" size={24} color={globalStyles.primaryColor} style={loginStyles.eye} onPress={()=> setShowPassword(!showPassword)}/>)}
+            :(<Entypo name="eye-with-line" size={24} color={globalStyles.primaryColor} style={loginStyles.eye} onPress={()=> setShowPassword(!showPassword)}/>)
+            }
           </View>
-
-          <Text style={globalStyles.primaryTitle} onPress={()=> navigation.navigate("forget")}>Forget Password?</Text>
 
           <TouchableOpacity style={globalStyles.btn} onPress={()=> checkInputs()}>
               <Text style={globalStyles.btnText}>
-                Sign In
+                Sign Up
               </Text>
           </TouchableOpacity>
-
-          <View>
-
-            <Text style={{textAlign:"center"}}>Or sign in with</Text>
-
-            <View  style={loginStyles.logIcons}>
-              {logMethods.map(({name, svg})=>(
-                <Text key={name}>{svg}</Text>
-              ))}
-            </View>
+          <View style={signUpStyles.log}>
+            <Text style={{textAlign:"center"}}>Have an account?</Text>
+            <TouchableWithoutFeedback style={signUpStyles.span} onPress={()=>navigation.navigate("login")}>
+                <Text  style={globalStyles.primaryTitle}>Sign in</Text>
+            </TouchableWithoutFeedback>
           </View>
         </View>
       </View>
@@ -98,48 +95,17 @@ const Login = ({navigation}) => {
   )
 }
 
-export default Login
+export default Signup
 
-export const loginStyles = StyleSheet.create({
-  loginContainer:{
-    justifyContent:"flex-end",
-    alignItems: "center",
-    marginBottom: 40,
-  },
-  back:{
-    position: "absolute",
-    left:20,
-    top:50,
-    zIndex:999
-  },
-  form:{
-    backgroundColor: "#EEBDAE",
-    padding:40,
-    width: "80%",
-    borderTopLeftRadius:111,
-    borderTopRightRadius:0,
-    borderBottomRightRadius:111,
-    borderBottomLeftRadius:0,
-    gap:20,
-    position:"relative"
-  },
+const signUpStyles = StyleSheet.create({
   floatImg:{
     position:"absolute",
-    top:-270
+    top:-178,
+    left:"40%",
   },
-  signInMethods:{
-    textAlign:"center",
-    position: "relative"
-  },
-  logIcons:{
-    marginTop: 20,
+  log:{
+    display:"flex",
     flexDirection:"row",
-    justifyContent:"space-around"
-  },
-  eye:{
-    position:"absolute",
-    right:15,
-    bottom:15,
-  },
-
+    justifyContent:"center",
+  }
 })

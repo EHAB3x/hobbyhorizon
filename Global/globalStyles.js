@@ -8,12 +8,11 @@ export const globalStyles = StyleSheet.create({
     },
     btn:{
         backgroundColor: "#105161",
-        width: "50%",
+        width: "80%",
         marginLeft: "auto",
         marginRight: "auto",
-        height: 50,
+        height: 45,
         justifyContent: "center",
-        marginBottom: 20,
         borderRadius: 15,
     },
     btnText:{
@@ -23,14 +22,35 @@ export const globalStyles = StyleSheet.create({
         fontSize: 17,
         fontFamily:"inter-semiBold"
     },
-    regText:{
+    primaryTitle:{
+        color: "#105161",
+        textAlign: "right",
+        fontFamily:"inter-regular"
+    },
+    title:{
         color: "#FFF",
         textAlign: "center",
-        fontFamily:"inter-regular"
+        fontFamily:"inter-regular",
+        fontSize:20,
+    },
+    label:{
+        color: "#105161",
+        textAlign: "left",
+        fontFamily:"inter-regular",
+        marginBottom:5,
+        marginLeft:10,
     },
     img:{
         width: "100%",
         height: "100%",
         resizeMode:"cover"
+    },
+    input:{
+        borderWidth: 2,
+        borderStyle: "solid",
+        borderColor:"#105161",
+        padding:10,
+        borderRadius:15,
+        color: "#FFF"
     }
 })
