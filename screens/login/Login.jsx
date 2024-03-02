@@ -28,26 +28,26 @@ const Login = ({navigation}) => {
   }
   return (
     <TouchableWithoutFeedback onPress={()=> Keyboard.dismiss()}>
-      <View style={[globalStyles.container, loginStyles.loginContainer]}>
+      <View style={[globalStyles.container, globalStyles.formContainer]}>
         <AntDesign
           name="leftcircle"
           size={45}
           color={globalStyles.primaryColor}
-          style={loginStyles.back}
+          style={globalStyles.back}
           onPress={()=>{
             navigation.goBack()
           }}
         />
 
-        <View style={loginStyles.form}>
+        <View style={globalStyles.form}>
 
-          <View style={loginStyles.floatImg}>
+          <View style={[globalStyles.floatImg, loginStyles.floatImg]}>
             <Image source={FloatImg}/>
           </View>
 
           <Text style={globalStyles.title}>Hi, Welcome Back!</Text>
 
-          <View style={loginStyles.field}>
+          <View style={globalStyles.field}>
             <Text style={globalStyles.label}>Email</Text>
             <TextInput 
               style={globalStyles.input}
@@ -58,7 +58,7 @@ const Login = ({navigation}) => {
             />
           </View>
 
-          <View style={loginStyles.field}>
+          <View style={globalStyles.field}>
             <Text style={globalStyles.label}>Password</Text>
             <TextInput 
               style={globalStyles.input}
@@ -68,8 +68,8 @@ const Login = ({navigation}) => {
               value={password}
             />
             {showPassword
-            ?(<Entypo name="eye" size={24} color={globalStyles.primaryColor}style={loginStyles.eye} onPress={()=> setShowPassword(!showPassword)}/>)
-            :(<Entypo name="eye-with-line" size={24} color={globalStyles.primaryColor} style={loginStyles.eye} onPress={()=> setShowPassword(!showPassword)}/>)}
+            ?(<Entypo name="eye" size={24} color={globalStyles.primaryColor}style={globalStyles.eye} onPress={()=> setShowPassword(!showPassword)}/>)
+            :(<Entypo name="eye-with-line" size={24} color={globalStyles.primaryColor} style={globalStyles.eye} onPress={()=> setShowPassword(!showPassword)}/>)}
           </View>
 
           <Text style={globalStyles.primaryTitle} onPress={()=> navigation.navigate("forget")}>Forget Password?</Text>
@@ -84,7 +84,7 @@ const Login = ({navigation}) => {
 
             <Text style={{textAlign:"center"}}>Or sign in with</Text>
 
-            <View  style={loginStyles.logIcons}>
+            <View  style={globalStyles.logIcons}>
               {logMethods.map(({name, svg})=>(
                 <Text key={name}>{svg}</Text>
               ))}
@@ -99,45 +99,7 @@ const Login = ({navigation}) => {
 export default Login
 
 export const loginStyles = StyleSheet.create({
-  loginContainer:{
-    justifyContent:"flex-end",
-    alignItems: "center",
-    marginBottom: 40,
-  },
-  back:{
-    position: "absolute",
-    left:20,
-    top:50,
-    zIndex:999
-  },
-  form:{
-    backgroundColor: "#EEBDAE",
-    padding:40,
-    width: "80%",
-    borderTopLeftRadius:111,
-    borderTopRightRadius:0,
-    borderBottomRightRadius:111,
-    borderBottomLeftRadius:0,
-    gap:20,
-    position:"relative"
-  },
   floatImg:{
-    position:"absolute",
     top:-270
-  },
-  signInMethods:{
-    textAlign:"center",
-    position: "relative"
-  },
-  logIcons:{
-    marginTop: 20,
-    flexDirection:"row",
-    justifyContent:"space-around"
-  },
-  eye:{
-    position:"absolute",
-    right:15,
-    bottom:15,
-  },
-
+  }
 })

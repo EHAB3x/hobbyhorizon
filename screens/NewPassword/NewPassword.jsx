@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, TextInput, TouchableWithoutFeedback, ToastAndro
 import { globalStyles } from '../../Global/globalStyles'
 import { AntDesign, Entypo } from '@expo/vector-icons';
 import FloatImg from "../../assets/newPassword.png"
-import { loginStyles } from '../login/Login';
 import { forget } from '../forget/Forget';
 const NewPassword = ({ navigation, route }) => {
     const [password, setPassword] = useState('');
@@ -26,27 +25,27 @@ const NewPassword = ({ navigation, route }) => {
     }
   return(
     <TouchableWithoutFeedback onPress={()=> Keyboard.dismiss()}>
-    <View style={[globalStyles.container, loginStyles.loginContainer]}>
+    <View style={[globalStyles.container, globalStyles.loginContainer]}>
       <AntDesign
         name="leftcircle"
         size={45}
         color={globalStyles.primaryColor}
-        style={loginStyles.back}
+        style={globalStyles.back}
         onPress={()=>{
           navigation.goBack()
         }}
       />
 
-      <View style={[ loginStyles.form, forget.form ]}>
+      <View style={[ globalStyles.form, forget.form ]}>
 
-        <View style={newPassword.floatImg}>
+        <View style={[globalStyles.floatImg, newPassword.floatImg]}>
           <Image source={FloatImg}/>
         </View>
 
         <Text style={globalStyles.title}>Create New Password</Text>
         <Text style={{color:globalStyles.primaryColor, textAlign:"center"}}>Your new password must be different from previously used passwords</Text>
 
-        <View style={loginStyles.field}>
+        <View style={globalStyles.field}>
           <Text style={globalStyles.label}>Enter new password</Text>
           <TextInput 
             style={globalStyles.input}
@@ -56,11 +55,11 @@ const NewPassword = ({ navigation, route }) => {
             value={password}
           />
           {showPassword1
-          ?(<Entypo name="eye" size={24} color={globalStyles.primaryColor}style={loginStyles.eye} onPress={()=> setShowPassword1(!showPassword1)}/>)
-          :(<Entypo name="eye-with-line" size={24} color={globalStyles.primaryColor} style={loginStyles.eye} onPress={()=> setShowPassword1(!showPassword1)}/>)}
+          ?(<Entypo name="eye" size={24} color={globalStyles.primaryColor}style={globalStyles.eye} onPress={()=> setShowPassword1(!showPassword1)}/>)
+          :(<Entypo name="eye-with-line" size={24} color={globalStyles.primaryColor} style={globalStyles.eye} onPress={()=> setShowPassword1(!showPassword1)}/>)}
         </View>
 
-        <View style={loginStyles.field}>
+        <View style={globalStyles.field}>
           <Text style={globalStyles.label}>Re-enter new password</Text>
           <TextInput 
             style={[globalStyles.input, check ? newPassword.unChecked :""]}
@@ -71,8 +70,8 @@ const NewPassword = ({ navigation, route }) => {
             onBlur={()=> password !== rePassword ? setCheck(true) : setCheck(false)}
           />
           {showPassword2
-          ?(<Entypo name="eye" size={24} color={globalStyles.primaryColor}style={loginStyles.eye} onPress={()=> setShowPassword2(!showPassword2)}/>)
-          :(<Entypo name="eye-with-line" size={24} color={globalStyles.primaryColor} style={loginStyles.eye} onPress={()=> setShowPassword2(!showPassword2)}/>)}
+          ?(<Entypo name="eye" size={24} color={globalStyles.primaryColor}style={globalStyles.eye} onPress={()=> setShowPassword2(!showPassword2)}/>)
+          :(<Entypo name="eye-with-line" size={24} color={globalStyles.primaryColor} style={globalStyles.eye} onPress={()=> setShowPassword2(!showPassword2)}/>)}
         </View>
 
         <TouchableOpacity style={[globalStyles.btn, forget.btn]} onPress={()=> checkInputs()} >
@@ -93,7 +92,6 @@ const newPassword = StyleSheet.create({
         borderColor:"red",
     },
     floatImg:{
-        position:"absolute",
         top:-180,
         left:"20%",
     },

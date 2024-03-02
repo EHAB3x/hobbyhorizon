@@ -52,5 +52,85 @@ export const globalStyles = StyleSheet.create({
         padding:10,
         borderRadius:15,
         color: "#FFF"
-    }
+    },  loginContainer:{
+    justifyContent:"flex-end",
+    alignItems: "center",
+    marginBottom: 40,
+  },
+  back:{
+    position: "absolute",
+    left:20,
+    top:50,
+    zIndex:999
+  },
+  form:{
+    backgroundColor: "#EEBDAE",
+    padding:40,
+    width: "80%",
+    borderTopLeftRadius:111,
+    borderTopRightRadius:0,
+    borderBottomRightRadius:111,
+    borderBottomLeftRadius:0,
+    gap:20,
+    position:"relative"
+  },
+  floatImg:{
+    position:"absolute",
+    top:-270
+  },
+  signInMethods:{
+    textAlign:"center",
+    position: "relative"
+  },
+  logIcons:{
+    marginTop: 20,
+    flexDirection:"row",
+    justifyContent:"space-around"
+  },
+  eye:{
+    position:"absolute",
+    right:15,
+    bottom:15,
+  },
+
+
+  formContainer:{
+    justifyContent:"flex-end",
+    alignItems: "center",
+    marginBottom: 40,
+  },
+  back:{
+    position: "absolute",
+    left:20,
+    top:50,
+    zIndex:999
+  },
+  form:{
+    backgroundColor: "#EEBDAE",
+    padding:40,
+    width: "80%",
+    borderTopLeftRadius:111,
+    borderTopRightRadius:0,
+    borderBottomRightRadius:111,
+    borderBottomLeftRadius:0,
+    gap:20,
+    position:"relative"
+  },
+  floatImg:{
+    position:"absolute",
+  },
+  signInMethods:{
+    textAlign:"center",
+    position: "relative"
+  },
+  logIcons:{
+    marginTop: 20,
+    flexDirection:"row",
+    justifyContent:"space-around"
+  },
+  eye:{
+    position:"absolute",
+    right:15,
+    bottom:15,
+  },
 })

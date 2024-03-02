@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, TextInput, TouchableWithoutFeedback, ToastAndro
 import { globalStyles } from '../../Global/globalStyles'
 import { AntDesign, Entypo  } from '@expo/vector-icons';
 import FloatImg from "../../assets/signup.png"
-import { loginStyles } from '../login/Login';
 const Signup = ({navigation}) => {
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
@@ -24,24 +23,24 @@ const Signup = ({navigation}) => {
   }
   return (
     <TouchableWithoutFeedback onPress={()=> Keyboard.dismiss()}>
-      <View style={[globalStyles.container, loginStyles.loginContainer]}>
+      <View style={[globalStyles.container, globalStyles.formContainer]}>
         <AntDesign
           name="leftcircle"
           size={45}
           color={globalStyles.primaryColor}
-          style={loginStyles.back}
+          style={globalStyles.back}
           onPress={()=> navigation.goBack()}
         />
 
-        <View style={loginStyles.form}>
+        <View style={globalStyles.form}>
 
-          <View style={signUpStyles.floatImg}>
+          <View style={[globalStyles.floatImg, signUpStyles.floatImg]}>
             <Image source={FloatImg}/>
           </View>
 
           <Text style={globalStyles.title}>Create New Account</Text>
 
-          <View style={loginStyles.field}>
+          <View style={globalStyles.field}>
             <Text style={globalStyles.label}>Username</Text>
             <TextInput 
               style={globalStyles.input}
@@ -52,7 +51,7 @@ const Signup = ({navigation}) => {
             />
           </View>
           
-          <View style={loginStyles.field}>
+          <View style={globalStyles.field}>
             <Text style={globalStyles.label}>Email</Text>
             <TextInput 
               style={globalStyles.input}
@@ -63,7 +62,7 @@ const Signup = ({navigation}) => {
             />
           </View>
 
-          <View style={loginStyles.field}>
+          <View style={globalStyles.field}>
             <Text style={globalStyles.label}>Password</Text>
             <TextInput 
               style={globalStyles.input}
@@ -73,8 +72,8 @@ const Signup = ({navigation}) => {
               value={password}
             />
             {showPassword
-            ?(<Entypo name="eye" size={24} color={globalStyles.primaryColor}style={loginStyles.eye} onPress={()=> setShowPassword(!showPassword)}/>)
-            :(<Entypo name="eye-with-line" size={24} color={globalStyles.primaryColor} style={loginStyles.eye} onPress={()=> setShowPassword(!showPassword)}/>)
+            ?(<Entypo name="eye" size={24} color={globalStyles.primaryColor}style={globalStyles.eye} onPress={()=> setShowPassword(!showPassword)}/>)
+            :(<Entypo name="eye-with-line" size={24} color={globalStyles.primaryColor} style={globalStyles.eye} onPress={()=> setShowPassword(!showPassword)}/>)
             }
           </View>
 
@@ -99,7 +98,6 @@ export default Signup
 
 const signUpStyles = StyleSheet.create({
   floatImg:{
-    position:"absolute",
     top:-178,
     left:"40%",
   },

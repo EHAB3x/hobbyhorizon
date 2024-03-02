@@ -3,27 +3,26 @@ import { StyleSheet, Text, View, TextInput, TouchableWithoutFeedback, ToastAndro
 import { globalStyles } from '../../Global/globalStyles'
 import { AntDesign, Entypo } from '@expo/vector-icons';
 import FloatImg from "../../assets/newPassword.png"
-import { loginStyles } from '../login/Login';
 import { forget } from '../forget/Forget';
 
 const Verify = ( {navigation, route}) => {
     console.log(route.params.email);
   return (
     <TouchableWithoutFeedback onPress={()=> Keyboard.dismiss()}>
-    <View style={[globalStyles.container, loginStyles.loginContainer]}>
+    <View style={[globalStyles.container, globalStyles.loginContainer]}>
       <AntDesign
         name="leftcircle"
         size={45}
         color={globalStyles.primaryColor}
-        style={loginStyles.back}
+        style={globalStyles.back}
         onPress={()=>{
           navigation.goBack()
         }}
       />
 
-      <View style={[ loginStyles.form, forget.form, {justifyContent:"space-between"}]}>
+      <View style={[ globalStyles.form, forget.form, {justifyContent:"space-between"}]}>
 
-        <View style={verify.floatImg}>
+        <View style={[globalStyles.floatImg, verify.floatImg]}>
           <Image source={FloatImg}/>
         </View>
 
@@ -72,7 +71,6 @@ export default Verify
 
 const verify = StyleSheet.create({
     floatImg:{
-        position:"absolute",
         top:-180,
         left:"20%",
     },
