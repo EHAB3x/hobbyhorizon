@@ -3,7 +3,6 @@ import { TouchableOpacity, Image, View, Text } from 'react-native'
 import landing from "../../assets/landing.png"
 import { globalStyles } from '../../Global/globalStyles'
 const Start = ({navigation}) => {
-  console.log(navigation.getState());
   return (
     <View style={globalStyles.container}>
         <Image source={landing}/>

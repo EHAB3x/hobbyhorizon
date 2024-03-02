@@ -21,8 +21,6 @@ const Login = ({navigation}) => {
       ToastAndroid.show(`Welcome,${email}`, ToastAndroid.SHORT);
       navigation.navigate("home")
     }else{
-      console.log(email);
-      console.log(password);
       ToastAndroid.show("Wrong Email or Password", ToastAndroid.SHORT);
       setEmail('')
       setPassword('')

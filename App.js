@@ -10,6 +10,7 @@ import { globalStyles } from "./Global/globalStyles";
 import Signup from "./screens/signup/Signup";
 import Forget from "./screens/forget/Forget";
 import NewPassword from "./screens/NewPassword/NewPassword";
+import Verify from "./screens/verify/Verify";
 
 const Stack = createNativeStackNavigator();
 
@@ -39,7 +40,7 @@ export default function App(){
                 name="start" 
                 component={Start} 
                 options={{
-                  title: '',
+                  title: 'login',
                   headerShown: false,
                 }}
               /> 
@@ -70,6 +71,14 @@ export default function App(){
               <Stack.Screen 
                 name="newPassword"
                 component={NewPassword} 
+                options={{
+                  title: '',
+                  headerShown: false
+                }}
+              /> 
+              <Stack.Screen 
+                name="verify"
+                component={Verify} 
                 options={{
                   title: '',
                   headerShown: false

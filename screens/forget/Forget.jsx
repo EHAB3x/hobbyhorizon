@@ -7,13 +7,13 @@ import { loginStyles } from '../login/Login';
 
 const Forget = ({ navigation }) => {
     const [email, setEmail] = useState('');
-    const [showPassword, setShowPassword] = useState(true);
 
     const checkInputs = ()=>{
       if(email === ''){
         ToastAndroid.show("Please Fill All Inputs!", ToastAndroid.SHORT)
       }else{
-        ToastAndroid.show("✅ Password changed successfully", ToastAndroid.SHORT) 
+        ToastAndroid.show("✅ Email sent successfully", ToastAndroid.SHORT) 
+        navigation.navigate("newPassword", { email: email })
       }
     }
   return (
@@ -42,6 +42,7 @@ const Forget = ({ navigation }) => {
             <TextInput 
               style={globalStyles.input}
               placeholder="example@gmail.com"  
+              keyboardType="email-address"
               onChangeText={(val)=> setEmail(val)}
               value={email}
             />
@@ -60,7 +61,7 @@ const Forget = ({ navigation }) => {
 
 export default Forget
 
-const forget = StyleSheet.create({
+export const forget = StyleSheet.create({
     floatImg:{
         position:"absolute",
         top:-179,
