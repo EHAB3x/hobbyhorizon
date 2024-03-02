@@ -93,7 +93,7 @@ export const globalStyles = StyleSheet.create({
     bottom:15,
   },
 
-
+  //Forms Global Styles
   formContainer:{
     justifyContent:"flex-end",
     alignItems: "center",

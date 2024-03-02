@@ -11,6 +11,7 @@ import Signup from "./screens/signup/Signup";
 import Forget from "./screens/forget/Forget";
 import NewPassword from "./screens/NewPassword/NewPassword";
 import Verify from "./screens/verify/Verify";
+import Congrats from "./screens/congrats/Congrats";
 
 const Stack = createNativeStackNavigator();
 
@@ -79,6 +80,14 @@ export default function App(){
               <Stack.Screen 
                 name="verify"
                 component={Verify} 
+                options={{
+                  title: '',
+                  headerShown: false
+                }}
+              /> 
+              <Stack.Screen 
+                name="congrats"
+                component={Congrats} 
                 options={{
                   title: '',
                   headerShown: false
