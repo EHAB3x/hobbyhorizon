@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { StyleSheet, Text, View, TextInput, TouchableWithoutFeedback, ToastAndroid, Image, Keyboard, TouchableOpacity } from 'react-native'
 import { globalStyles } from '../../Global/globalStyles'
 import { AntDesign, Entypo } from '@expo/vector-icons';
@@ -6,6 +6,20 @@ import FloatImg from "../../assets/newPassword.png"
 import { forget } from '../forget/Forget';
 
 const Verify = ( {navigation, route}) => {
+  const inputs = useRef([]);
+
+  const focusNextInput = (index) => {
+    if (inputs.current[index + 1]) {
+      inputs.current[index + 1].focus();
+    }
+  };
+
+  const focusPreviousInput = (index) => {
+    if (inputs.current[index - 1]) {
+      inputs.current[index - 1].focus();
+    }
+  };
+
     console.log(route.params.email);
   return (
     <TouchableWithoutFeedback onPress={()=> Keyboard.dismiss()}>
@@ -35,18 +49,22 @@ const Verify = ( {navigation, route}) => {
 
         <View>
             <View style={verify.field}>
-            <TextInput 
-                style={verify.input}  
-            />
-            <TextInput 
-                style={verify.input}  
-            />
-            <TextInput 
-                style={verify.input}  
-            />
-            <TextInput 
-                style={verify.input}  
-            />
+              {[0, 1, 2, 3].map((index) => (
+                  <TextInput
+                    keyboardType="numeric"
+                    key={index}
+                    ref={(input) => (inputs.current[index] = input)}
+                    style={verify.input}
+                    onChangeText={(text) => {
+                      if (text.length === 1) {
+                        focusNextInput(index);
+                      } else if (text.length === 0) {
+                        focusPreviousInput(index);
+                      }
+                    }}
+                    maxLength={1}
+                  />
+                ))}
             </View>
             <TouchableOpacity style={[globalStyles.btn, forget.btn,{marginTop:25}]} onPress={()=> checkInputs()} >
                 <Text style={globalStyles.btnText}>
@@ -84,5 +102,8 @@ const verify = StyleSheet.create({
         borderRadius:10,
         width:50,
         height:50,
+        textAlign:"center",
+        fontSize:20,
+        fontWeight:"bold"
     }
 })
