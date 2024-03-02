@@ -6,10 +6,13 @@ import FloatImg from "../../assets/forget.png"
 
 const Forget = ({ navigation }) => {
     const [email, setEmail] = useState('');
+    const mailRegex = /\b[\w!@#$%^&*-=+]+@\w+\.\w+\b/ig;
 
     const checkInputs = ()=>{
       if(email === ''){
         ToastAndroid.show("Please Fill All Inputs!", ToastAndroid.SHORT)
+      }else if(email.match(mailRegex) === null){
+        ToastAndroid.show("❌ Please enter a valid mail", ToastAndroid.SHORT) 
       }else{
         ToastAndroid.show("✅ Email sent successfully", ToastAndroid.SHORT) 
         navigation.navigate("newPassword", { email: email })

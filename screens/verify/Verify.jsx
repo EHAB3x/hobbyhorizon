@@ -2,25 +2,46 @@ import React, { useRef, useState } from 'react'
 import { StyleSheet, Text, View, TextInput, TouchableWithoutFeedback, ToastAndroid, Image, Keyboard, TouchableOpacity } from 'react-native'
 import { globalStyles } from '../../Global/globalStyles'
 import { AntDesign, Entypo } from '@expo/vector-icons';
-import FloatImg from "../../assets/newPassword.png"
+import FloatImg from "../../assets/verify.png"
 import { forget } from '../forget/Forget';
 
 const Verify = ( {navigation, route}) => {
-  const inputs = useRef([]);
+  const [inputs, setInputs] = useState(['', '', '', '']);
+  const inputRefs = useRef([]);
 
   const focusNextInput = (index) => {
-    if (inputs.current[index + 1]) {
-      inputs.current[index + 1].focus();
+    if (inputRefs.current[index + 1]) {
+      inputRefs.current[index + 1].focus();
     }
   };
 
   const focusPreviousInput = (index) => {
-    if (inputs.current[index - 1]) {
-      inputs.current[index - 1].focus();
+    if (inputRefs.current[index - 1]) {
+      inputRefs.current[index - 1].focus();
     }
   };
 
-    console.log(route.params.email);
+  const handleInputChange = (index, value) => {
+    const newInputs = [...inputs];
+    newInputs[index] = value;
+    setInputs(newInputs);
+
+    if (value.length === 1) {
+      focusNextInput(index);
+    } else if (value.length === 0) {
+      focusPreviousInput(index);
+    }
+  };
+
+  const checkInputs = () => {
+    const code = inputs.join('');
+    if(code.length < 4){
+      ToastAndroid.show("Please Fill All Inputs", ToastAndroid.SHORT)
+    }else{
+      // navigation.navigate("congrats");
+      // check code with backend 
+    }
+  };
   return (
     <TouchableWithoutFeedback onPress={()=> Keyboard.dismiss()}>
     <View style={[globalStyles.container, globalStyles.loginContainer]}>
@@ -49,22 +70,17 @@ const Verify = ( {navigation, route}) => {
 
         <View>
             <View style={verify.field}>
-              {[0, 1, 2, 3].map((index) => (
-                  <TextInput
-                    keyboardType="numeric"
-                    key={index}
-                    ref={(input) => (inputs.current[index] = input)}
-                    style={verify.input}
-                    onChangeText={(text) => {
-                      if (text.length === 1) {
-                        focusNextInput(index);
-                      } else if (text.length === 0) {
-                        focusPreviousInput(index);
-                      }
-                    }}
-                    maxLength={1}
-                  />
-                ))}
+            {inputs.map((value, index) => (
+            <TextInput
+            keyboardType="numeric"
+              key={index}
+              ref={(ref) => (inputRefs.current[index] = ref)}
+              style={verify.input}
+              onChangeText={(text) => handleInputChange(index, text)}
+              maxLength={1}
+              value={value}
+            />
+          ))}
             </View>
             <TouchableOpacity style={[globalStyles.btn, forget.btn,{marginTop:25}]} onPress={()=> checkInputs()} >
                 <Text style={globalStyles.btnText}>
@@ -89,7 +105,7 @@ export default Verify
 
 const verify = StyleSheet.create({
     floatImg:{
-        top:-180,
+        top:-177,
         left:"20%",
     },
     field:{
