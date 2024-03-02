@@ -39,6 +39,7 @@ const Verify = ( {navigation, route}) => {
       ToastAndroid.show("Please Fill All Inputs", ToastAndroid.SHORT)
     }else{
       ToastAndroid.show("Password changed successfully", ToastAndroid.SHORT)
+      navigation.navigate("login")
       // check code with backend 
     }
   };
