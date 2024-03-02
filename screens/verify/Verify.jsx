@@ -38,9 +38,16 @@ const Verify = ( {navigation, route}) => {
     if(code.length < 4){
       ToastAndroid.show("Please Fill All Inputs", ToastAndroid.SHORT)
     }else{
-      ToastAndroid.show("Password changed successfully", ToastAndroid.SHORT)
-      navigation.navigate("login")
-      // check code with backend 
+      if (route.params.from === "signup") {
+        ToastAndroid.show("Account created successfully", ToastAndroid.SHORT)
+        navigation.navigate("login")
+        // check code with backend 
+      }else if(route.params.from === "newPassword"){
+        ToastAndroid.show("Password changed successfully", ToastAndroid.SHORT)
+        navigation.navigate("login")
+        setInputs(['', '', '', ''])
+        // check code with backend 
+      }
     }
   };
   return (

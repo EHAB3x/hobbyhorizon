@@ -20,7 +20,7 @@ const NewPassword = ({ navigation, route }) => {
         }
         else{
             ToastAndroid.show("✅ Password changed successfully", ToastAndroid.SHORT);
-            navigation.navigate("verify", {email, password});
+            navigation.navigate("verify", {email, password,from:"newPassword"});
         }
     }
   return(

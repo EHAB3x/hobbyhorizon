@@ -2,9 +2,9 @@ import React from 'react'
 import { StyleSheet, Text, View, TextInput, TouchableWithoutFeedback, ToastAndroid, Image, Keyboard, TouchableOpacity } from 'react-native'
 import { globalStyles } from '../../Global/globalStyles'
 import congrats from "../../assets/congrats.png"
-const Congrats = ({ navigation }) => {
+const Congrats = ({ navigation, route }) => {
     const checkInputs = ()=>{
-        // navigation.navigate("home")
+        navigation.navigate("verify",{email:route.params.email,from:"signup"})
     }
   return (
     <View style={[globalStyles.container, congratsStyles.container]}>

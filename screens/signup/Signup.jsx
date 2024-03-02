@@ -13,7 +13,7 @@ const Signup = ({navigation}) => {
     if (email === ''|| password === '' || userName === '') {
       ToastAndroid.show("Please Fill All Inputs!", ToastAndroid.SHORT);
     }else if(email === "ehabmah6969@gmail.com"){
-      navigation.navigate("congrats");
+      navigation.navigate("congrats",{email:email});
     }else{
       ToastAndroid.show("Wrong Email or Password", ToastAndroid.SHORT);
       setEmail('')
