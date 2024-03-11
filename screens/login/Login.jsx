@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { StyleSheet, Text, View, TextInput, TouchableWithoutFeedback, ToastAndroid, Image, Keyboard, TouchableOpacity } from 'react-native'
 import { globalStyles } from '../../Global/globalStyles'
 import { FontAwesome , AntDesign, Entypo  } from '@expo/vector-icons';
-import FloatImg from "../../assets/signin.png"
+import FloatImg from "../../assets/signin.png";
 const Login = ({navigation}) => {
   const [showPassword, setShowPassword] = useState(true);
   const [email, setEmail] = useState('');

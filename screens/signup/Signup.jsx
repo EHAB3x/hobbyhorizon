@@ -81,6 +81,7 @@ const Signup = ({navigation}) => {
                 Sign Up
               </Text>
           </TouchableOpacity>
+          
           <View style={signUpStyles.log}>
             <Text style={{textAlign:"center"}}>Have an account?</Text>
             <TouchableWithoutFeedback style={signUpStyles.span} onPress={()=>navigation.navigate("login")}>

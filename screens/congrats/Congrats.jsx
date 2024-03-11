@@ -20,7 +20,7 @@ const Congrats = ({ navigation, route }) => {
 
         <TouchableOpacity style={globalStyles.btn} onPress={()=> checkInputs()} >
                 <Text style={globalStyles.btnText}>
-                Verify
+                    Verify
                 </Text>
         </TouchableOpacity>    
     </View>

@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, View, TextInput, TouchableWithoutFeedback, ToastAndroid, Image, Keyboard, TouchableOpacity } from 'react-native'
 import { globalStyles } from '../../Global/globalStyles'
-import { AntDesign, Entypo } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 import FloatImg from "../../assets/forget.png"
 
 const Forget = ({ navigation }) => {
     const [email, setEmail] = useState('');
+    
     const mailRegex = /\b[\w!@#$%^&*-=+]+@\w+\.\w+\b/ig;
 
     const checkInputs = ()=>{

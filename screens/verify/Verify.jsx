@@ -1,15 +1,15 @@
 import React, { useRef, useState } from 'react'
 import { StyleSheet, Text, View, TextInput, TouchableWithoutFeedback, ToastAndroid, Image, Keyboard, TouchableOpacity } from 'react-native'
 import { globalStyles } from '../../Global/globalStyles'
-import { AntDesign, Entypo } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 import FloatImg from "../../assets/verify.png"
 import { forget } from '../forget/Forget';
 
-const Verify = ( {navigation, route}) => {
+const Verify = ( { navigation, route }) =>{
   const [inputs, setInputs] = useState(['', '', '', '']);
   const inputRefs = useRef([]);
-
-  const focusNextInput = (index) => {
+  
+  const focusNextInput = (index) =>{
     if (inputRefs.current[index + 1]) {
       inputRefs.current[index + 1].focus();
     }
@@ -80,9 +80,9 @@ const Verify = ( {navigation, route}) => {
             <View style={verify.field}>
             {inputs.map((value, index) => (
             <TextInput
-            keyboardType="numeric"
+              keyboardType="numeric"
               key={index}
-              ref={(ref) => (inputRefs.current[index] = ref)}
+              ref= {(ref) => (inputRefs.current[index] = ref)}
               style={verify.input}
               onChangeText={(text) => handleInputChange(index, text)}
               maxLength={1}
@@ -90,6 +90,7 @@ const Verify = ( {navigation, route}) => {
             />
           ))}
             </View>
+
             <TouchableOpacity style={[globalStyles.btn, forget.btn,{marginTop:25}]} onPress={()=> checkInputs()} >
                 <Text style={globalStyles.btnText}>
                 Verify
